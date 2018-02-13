@@ -1,0 +1,87 @@
+<h1>Angualar Meterial components Demo</h1>
+<form class="example-form">
+  <ol>
+    <li>
+      <mat-form-field>
+        <input matInput [(ngModel)]="name" name="name" placeholder="What's your name?">
+      </mat-form-field>
+    </li>
+    <li>
+      <button mat-raised-button (click)="openDialog()">Pick one</button>
+    </li>
+    <li *ngIf="food">
+      You chose:
+      <i>{{food}}</i>
+    </li>
+  </ol>
+  <mat-form-field class="col-sm-6 example-full-width" >
+    <input type="text" placeholder="Autocomplete" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of options" [value]="option">
+        {{ option }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <mat-form-field class="col-sm-6 example-full-width">
+    <input matInput placeholder="input box" value="">
+  </mat-form-field>
+  <mat-form-field class="col-sm-6 example-full-width">
+    <textarea matInput placeholder="Text area"></textarea>
+  </mat-form-field>
+  <mat-form-field class="col-sm-6 example-full-width">
+    <textarea matInput placeholder="Autosize textarea" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"></textarea>
+  </mat-form-field>
+  <mat-form-field class="col-sm-6 example-full-width">
+    <mat-select placeholder="Dropdown">
+      <mat-option *ngFor="let food of foods" [value]="food.value">
+        {{ food.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-checkbox >Check box</mat-checkbox>
+  <mat-radio-group>
+    <mat-radio-button value="1">Option 1</mat-radio-button>
+    <mat-radio-button value="2">Option 2</mat-radio-button>
+  </mat-radio-group>
+ 
+  <mat-slider value="50"></mat-slider>
+  <section class="example-section"> 
+    <mat-slide-toggle class="example-margin" [color]="color" [checked]="checked" [disabled]="disabled">
+      Slide Toggler
+    </mat-slide-toggle>
+  </section>
+  <label></label>
+  <mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Fill out your name</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Fill out your address</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Address" formControlName="secondCtrl" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      You are now done.
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</form>
