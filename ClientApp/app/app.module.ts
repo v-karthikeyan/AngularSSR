@@ -27,9 +27,13 @@ import { LinkService } from './shared/link.service';
 import { UserService } from './shared/user.service';
 import { ORIGIN_URL } from '@nguniversal/aspnetcore-engine';
 
+// Angular Meterial
 import { MatAutocompleteModule ,MatCheckboxModule, MatDatepickerModule, MatFormFieldModule, MatInputModule, MatRadioModule, MatSelectModule, 
     MatSliderModule, MatSlideToggleModule, MatStepperModule, MatDialogModule, MatButtonModule } from '@angular/material';
 
+// Kendo UI
+import { GridModule } from '@progress/kendo-angular-grid';
+import { KendoUiGridComponent } from './containers/kendo-ui-grid/kendo-ui-grid.component';
 
 export function createTranslateLoader(http: HttpClient, baseHref) {
     // Temporary Azure hack
@@ -51,7 +55,8 @@ export function createTranslateLoader(http: HttpClient, baseHref) {
         NotFoundComponent,
         NgxBootstrapComponent,
         AngularMeterialControlsComponent,
-        DialogOverviewExampleDialog
+        DialogOverviewExampleDialog,
+        KendoUiGridComponent
     ],
     entryComponents: [ DialogOverviewExampleDialog ],
     imports: [
@@ -64,7 +69,7 @@ export function createTranslateLoader(http: HttpClient, baseHref) {
         BrowserTransferStateModule,
         MatAutocompleteModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldModule, MatInputModule, MatRadioModule, MatSelectModule, 
         MatSliderModule, MatSlideToggleModule, MatStepperModule, MatDialogModule, MatButtonModule,
-
+        GridModule,
         FormsModule,ReactiveFormsModule,
         Ng2BootstrapModule.forRoot(), // You could also split this up if you don't want the Entire Module imported
 
@@ -114,6 +119,9 @@ export function createTranslateLoader(http: HttpClient, baseHref) {
             },
             {
                 path: 'angularMeterial', component: AngularMeterialControlsComponent,
+            },
+            {
+                path: 'kendoGrid', component: KendoUiGridComponent,
             },
             {
                 path: 'users', component: UsersComponent,
